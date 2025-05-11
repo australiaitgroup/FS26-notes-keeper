@@ -5,13 +5,7 @@ import Header from "./components/Header";
 import CreateNote from "./components/CreateNote";
 
 function App() {
-  const [notes, setNotes] = useState([
-    {
-      id: new Date(),
-      title: "test title",
-      content: "test content",
-    },
-  ]);
+  const [notes, setNotes] = useState([]);
 
   const deleteNote = itemToDeleteId => {
     setNotes(prevNotes => {

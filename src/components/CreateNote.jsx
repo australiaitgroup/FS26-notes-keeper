@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Zoom from "@mui/material/Zoom";
 import Fab from "@mui/material/Fab";
-import Note from "./Note";
+import Fade from "@mui/material/Fade";
 
 const CreateNote = ({ addNote }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -27,7 +27,7 @@ const CreateNote = ({ addNote }) => {
   };
 
   return (
-    <div className="create-area">
+    <div className="create-area" onSubmit={submitNote}>
       <form className="create-note">
         {isExpanded && (
           <input
@@ -49,12 +49,14 @@ const CreateNote = ({ addNote }) => {
           rows={isExpanded ? 3 : 1}
         />
         <Zoom in={isExpanded}>
-          <Fab onClick={submitNote}>
+          <Fab type="submit">
             <AddIcon />
           </Fab>
         </Zoom>
       </form>
-      <p>{errorMessage}</p>
+      <Fade in={errorMessage}>
+        <p className="error">{errorMessage}</p>
+      </Fade>
     </div>
   );
 };
