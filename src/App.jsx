@@ -1,12 +1,23 @@
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import CreateNote from "./components/CreateNote";
+import Header from "./components/Header";
+import Note from "./components/Note";
 
 function App() {
+  const [notes, setNotes] = useState([
+    { id: new Date(), title: "test title", content: "test content" },
+  ]);
 
   return (
     <>
-     notes keeper
+      <Header />
+      <CreateNote />
+      {notes.map((noteItem, index) => {
+        return <Note />;
+      })}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
