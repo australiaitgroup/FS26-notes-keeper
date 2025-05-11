@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 html {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 body {
   background: #eee;
-  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
   padding: 0 16px;
 }
 
@@ -21,10 +21,9 @@ header {
 
 header h1 {
   color: #fff;
-  font-family: "McLaren", cursive;
+  font-family: 'McLaren', cursive;
   font-weight: 200;
 }
-
 
 .note {
   background: #fff;
@@ -95,6 +94,7 @@ form.create-note button {
 
 .alert {
   display: block;
+  text-align: center;
 }
 
 .error {
