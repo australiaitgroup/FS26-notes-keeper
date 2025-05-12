@@ -107,3 +107,10 @@ form.create-note button {
   width: 50%;
   border-radius: 5px;
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import Zoom from '@mui/material/Zoom';
 import Fab from '@mui/material/Fab';
@@ -52,7 +52,11 @@ const CreateNote = ({addNote}) => {
                 </Fab>
             </Zoom>
         </form>
-       <p>{errorMessage}</p>
+
+        <div className='error-message'>
+            {errorMessage && <p>{errorMessage}</p>}
+        </div>
+
     </div>
   )
 }

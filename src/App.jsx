@@ -1,16 +1,16 @@
-import './App.css'
 import { useState } from 'react'
-import Note from './component/Note'
-import Header from './component/Header'
-import CreateNote from './component/CreateNote'
+import './App.css'
+import Note from './components/Note'
+import Header from './components/Header'
+import CreateNote from './components/CreateNote'
 
 
 function App() {
-  const [notes, setNotes] = useState([{id: new Date(), title: 'test Title', content: 'test Content'}])
-  const deleteNote = (id) => {
+  const [notes, setNotes] = useState([{id: new Date(), title: 'test Title', content: 'test Content'}]);
+  const deleteNote = (itemToDeleteId) => {
     setNotes((prevNotes) => {
-      return prevNotes.filter((noteItem, itemToDeleteId) => {
-        return itemToDeleteId !== id
+      return prevNotes.filter((noteItem) => {
+        return itemToDeleteId !== noteItem.id
       })
     })
   }
@@ -20,8 +20,7 @@ function App() {
 
   return (
     <>
-      <Header />
-      <CreateNote />
+      <Header/>
       <CreateNote addNote={addNote} />
       {notes.map((noteItem) => {
         return (

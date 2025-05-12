@@ -7,7 +7,7 @@ export default function Note({noteItem, deleteNote}) {
         <h1>{noteItem.title}</h1>
         <p>{noteItem.content}</p>
         <button onClick={() => deleteNote(noteItem.id)}>
-            <DeleteIcon />
+            <DeleteIcon/>
         </button>
         
     </div>
