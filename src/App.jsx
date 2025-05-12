@@ -1,16 +1,18 @@
-import { useState } from 'react';
 import './App.css';
-import Note from './components/Note';
 import Header from './components/Header';
 import CreateNote from './components/CreateNote';
+import Note from './components/Note';
+import { useState } from 'react';
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([
+    { id: Date.now(), title: 'test title', content: 'test contend' }
+  ]);
 
-  const deleteNote = (id) => {
+  const deleteNote = (deletedItemId) => {
     setNotes((prevNotes) => {
-      return prevNotes.filter((prev) => {
-        return prev.id !== id;
+      return prevNotes.filter((noteItem) => {
+        return deletedItemId !== noteItem.id;
       });
     });
   };
@@ -22,12 +24,22 @@ function App() {
   return (
     <>
       <Header />
-      <CreateNote addNote={addNote} />
-      {notes.map((noteItem) => {
-        return (
-          <Note key={noteItem.id} noteItem={noteItem} deleteNote={deleteNote} />
-        );
-      })}
+      <div>
+        <CreateNote addNote={addNote} />
+        {notes.length === 0 ? (
+          <p style={{ textAlign: 'center' }}>No notes yet.</p>
+        ) : (
+          <div className="note-container"> {/* ✅ 加容器控制布局 */}
+            {notes.map((noteItem, index) => (
+              <Note
+                key={noteItem.id}
+                noteItem={noteItem}
+                deleteNote={deleteNote}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }

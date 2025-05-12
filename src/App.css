@@ -1,20 +1,34 @@
+/* 清除所有默认边距 + 通用布局设定 */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-html {
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* ✅ 保证占满视口高度 */
+  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-}
-body {
   background: #eee;
   background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
-  padding: 0 16px;
 }
 
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;  /* ✅ 保证 React 渲染区也贴顶 */
+  position: relative;
+  top: 0;
+}
+
+
+
+/* Header 样式：全宽横条 */
 header {
   background-color: #f5ba13;
-  margin: auto -16px;
+  width: 100vw; /* ✅ 占满宽度 */
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -23,60 +37,44 @@ header h1 {
   color: #fff;
   font-family: 'McLaren', cursive;
   font-weight: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.note {
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 2px 5px #ccc;
-  padding: 10px;
-  width: 240px;
-  margin: 16px;
-  float: left;
-}
-.note h1 {
-  font-size: 1.1em;
-  margin-bottom: 6px;
-}
-.note p {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+/* 表单区域居中 */
+.create-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-.note button {
-  position: relative;
-  float: right;
-  margin-right: 10px;
-  color: #f5ba13;
-  border: none;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  outline: none;
-  background: none;
-}
-
+/* 表单样式 */
 form.create-note {
   position: relative;
   width: 480px;
-  margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
+
 form.create-note input,
 form.create-note textarea {
   width: 100%;
   border: none;
-  padding: 4px;
+  padding: 8px;
   outline: none;
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
+  border-radius: 4px;
 }
+
+form.create-note textarea {
+  margin-top: 8px;
+}
+
 form.create-note button {
   position: absolute;
   right: 18px;
@@ -92,6 +90,50 @@ form.create-note button {
   outline: none;
 }
 
+/* Note 卡片横向排列居中 */
+.note-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Note 卡片样式 */
+.note {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  width: 240px;
+  height: auto;
+}
+
+.note h1 {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+
+.note p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.note button {
+  float: right;
+  margin-right: 10px;
+  color: #f5ba13;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  background: none;
+}
+
+/* 错误提示样式 */
 .alert {
   display: block;
   text-align: center;

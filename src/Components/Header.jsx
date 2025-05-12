@@ -1,14 +1,16 @@
-import React from 'react';
+import React from 'react'
 import NoteIcon from '@mui/icons-material/Note';
+import '../App.css'
 
 const Header = () => {
   return (
-    <header>
+    <header className='header' >
       <h1>
-        <NoteIcon /> Keeper
+        <NoteIcon/> Keeper
       </h1>
-    </header>
-  );
-};
 
-export default Header;
+    </header>
+  )
+}
+
+export default Header

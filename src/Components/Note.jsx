@@ -1,14 +1,16 @@
-import React from 'react';
-import NoteIcon from '@mui/icons-material/Note';
+import React from 'react'
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Header = () => {
+const Note = ({noteItem, deleteNote}) => {
   return (
-    <header>
-      <h1>
-        <NoteIcon /> Keeper
-      </h1>
-    </header>
-  );
-};
+    <div className='note'>
+      <h1>{noteItem.title}</h1>
+      <p>{noteItem.content}</p>
+      <button onClick={()=>deleteNote(noteItem.id)}>
+        <DeleteIcon/>
+      </button>
+    </div>
+  )
+}
 
-export default Header;
+export default Note
