@@ -1,10 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import { Fab, Zoom } from '@mui/material'
-import Note from './Note'
-import { NestCamWiredStandTwoTone } from '@mui/icons-material'
-
 
 const CreateNote = ({ addNote }) => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -13,12 +10,12 @@ const CreateNote = ({ addNote }) => {
   const submitNote = (event) => {
     console.debug("Clicked on add button")
     if (!newNote.title || !newNote.content) {
-      setErrorMessage('title and content are required')
+      console.log('error')
+      setErrorMessage('Title and content are required')
     } else {
       addNote({...newNote,id:new Date()})
       setNewNote ({title:'',content:''})
       setIsExpanded(false)
-      console.debug("call add Note")
     }
     event.preventDefault()
   }
@@ -40,7 +37,7 @@ const CreateNote = ({ addNote }) => {
             placeholder='Title'
           />
         )
-        }
+      }
         <textarea
           className='textarea'
           name='content'
@@ -55,9 +52,47 @@ const CreateNote = ({ addNote }) => {
             <AddIcon></AddIcon>
           </Fab>
         </Zoom>
+        <ErrorMessage errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
       </form>
     </div>
   )
 }
 
 export default CreateNote
+
+const ErrorMessage = ({errorMessage,setErrorMessage})=> {
+  const [visible,setVisible] = useState(false);
+  useEffect(()=>{
+    console.debug("Effect errorMessage:"+errorMessage)
+    if(errorMessage){
+      setVisible(true);
+    }
+    setTimeout(()=> {
+      setErrorMessage('');
+      setVisible(false);
+    },3000)
+  },[errorMessage]
+
+);
+
+
+
+  return(
+    <div
+    className='error-message'
+    style ={{
+      display:visible ? "block":"none",
+      color:"red",
+      backgroundColor:'rgba(0,0,0,0.1)',
+      textAlign:'center',
+      fontSize:'15px',
+      lineHeight:'15px',
+      maxWidth:'75ch',
+      padding: '5px',
+      }}
+    >
+      {errorMessage}
+    </div>
+  )
+}
+
