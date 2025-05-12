@@ -8,7 +8,6 @@ const CreateNote = ({ addNote }) => {
   const [newNote, setNewNote] = useState({ title: '', content: '' })
   const [errorMessage, setErrorMessage] = useState('')
   const submitNote = (event) => {
-    console.debug("Clicked on add button")
     if (!newNote.title || !newNote.content) {
       console.log('error')
       setErrorMessage('Title and content are required')
@@ -63,7 +62,6 @@ export default CreateNote
 const ErrorMessage = ({errorMessage,setErrorMessage})=> {
   const [visible,setVisible] = useState(false);
   useEffect(()=>{
-    console.debug("Effect errorMessage:"+errorMessage)
     if(errorMessage){
       setVisible(true);
     }
