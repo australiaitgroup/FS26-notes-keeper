@@ -6,7 +6,7 @@ import CreateNote from './components/CreateNote'
 
 
 function App() {
-  const [notes, setNotes] = useState([{ id:new Date(), title: 'test tittle', content: 'test content' }]);
+  const [notes, setNotes] = useState([{ id: new Date(), title: 'test tittle', content: 'test content' }]);
   const deleteNote = (itemToDeleteId) => {
     setNotes((prevNotes) => {
       return prevNotes.filter((noteItem) => {
@@ -16,16 +16,19 @@ function App() {
     })
   }
   const addNote = (newNote) => {
-    setNotes([...notes,newNote])
+    setNotes([...notes, newNote])
   }
 
   return (
     <>
       <Header></Header>
-      <CreateNote addNote={addNote}/>
-      {notes.map((noteItem, index) => {
-        return <Note key={noteItem.id} noteItem={noteItem} deleteNote={deleteNote} />
-      })}
+      <CreateNote addNote={addNote} />
+      <div className='notes-container'>
+        {notes.map((noteItem, index) => {
+          return <Note key={noteItem.id} noteItem={noteItem} deleteNote={deleteNote} />
+        })}
+      </div>
+
 
     </>
   )

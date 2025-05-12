@@ -25,7 +25,10 @@ header h1 {
   font-weight: 200;
 }
 
-
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 .note {
   background: #fff;
   border-radius: 7px;
