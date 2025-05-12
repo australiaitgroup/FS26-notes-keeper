@@ -28,8 +28,11 @@ header h1 {
 .notes-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .note {
+  flex-grow: 1;
+  max-width: 75ch;
   background: #fff;
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
