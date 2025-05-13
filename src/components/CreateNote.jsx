@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Zoom from '@mui/material/Zoom';
 import Fab from '@mui/material/Fab';
@@ -22,6 +22,7 @@ const CreateNote = ({ addNote }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setErrorMessage('');
     setNewNote((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -45,7 +46,7 @@ const CreateNote = ({ addNote }) => {
           onChange={handleChange}
           rows={isExpanded ? 3 : 1}
         />
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        {errorMessage && <p className="error">{errorMessage}</p>}
         {isExpanded && (
           <Zoom in={isExpanded}>
             <Fab onClick={handleClick}>
