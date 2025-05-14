@@ -24,16 +24,8 @@ header h1 {
   font-family: "McLaren", cursive;
   font-weight: 200;
 }
-
-
-.note {
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 2px 5px #ccc;
-  padding: 10px;
-  width: 240px;
-  margin: 16px;
-  float: left;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 .note h1 {
   font-size: 1.1em;
@@ -97,19 +89,6 @@ form.create-note button {
   display: block;
 }
 
-.error {
-  background: red;
-  color: white;
-  margin: 20px auto;
-  padding: 10px;
-  font-weight: 700;
-  width: 50%;
-  border-radius: 5px;
-}
-
-.error-message {
-  color: red;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 10px;
+.read-the-docs {
+  color: #888;
 }
