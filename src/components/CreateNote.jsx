@@ -10,16 +10,22 @@ const CreateNote = ({ addNote }) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const [newNote, setNewNote] = useState({ title: '', content: '' })
     const [errorMessage, setErrorMessage] = useState('')
+    const [showError, setShowError] = useState(false)
     const submitNote = (event) => {
         event.preventDefault()//阻止默认行为
         if (!newNote.title || !newNote.content) {
             setErrorMessage('title and content are required!')
+            setShowError(true)
+            setTimeout(() => {
+                setShowError(false)
+            }, 3000)
 
         } else {
             addNote({ ...newNote, id: new Date() })
             setNewNote({ title: '', content: '' })
             setIsExpanded(false)
             setErrorMessage('');
+            setShowError(false);
         }
 
 
@@ -55,7 +61,7 @@ const CreateNote = ({ addNote }) => {
             </form>
 
 
-            {errorMessage && (
+            {showError && (
                 <Alert severity="error" sx={{ mt: 1, fontSize: '0.9rem' }}>
                     {errorMessage}
                 </Alert>
